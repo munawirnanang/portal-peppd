@@ -1,0 +1,54 @@
+{{-- author  : Muhamad Munawir Amin
+Email        : muhamadmunawiramin@gmail.com
+Last Update  : 3 Februari 2021 --}}
+
+@push('style')
+    <link
+      href="{{ asset('css/hardcode/application_content.css') }}"
+      type="text/css"
+      rel="stylesheet"
+      media="screen,projection"
+    />
+@endpush
+
+<div class="container application-content-container" style="width: 100%; margin-top: 4%;">
+    <h6 class="menu-title application-content-title" id="application-content" style="text-align: left;"><b><i class="fa fa-external-link"></i> APLIKASI</b></h6>
+    <hr>
+
+    <div class="row">
+        
+        <div class="col s4 m12 l12">
+            <div class="card application-content-card hoverable" style="border-radius: 10px 10px 10px 10px;">
+                <div class="card-image application-content-card-image">
+                    <img src="{{ asset('images/icons_2/penilaian_ppd.png') }}" alt="Login Sistem Penilaian">
+                    <div class="overlay">
+                        <a href="#" class="icon" title="Login Sistem Penilaian">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-content application-content-card-content" style="text-align: center;">
+                    <p>LOGIN SISTEM PENILAIAN</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col s4 m12 l12">
+            <div class="card application-content-card hoverable" style="border-radius: 10px 10px 10px 10px;">
+                <div class="card-image application-content-card-image">
+                    <img src="{{ asset('images/icons_2/penilaian_ppd.png') }}" alt="Login Sistem Penilaian">
+                    <div class="overlay">
+                        <a href="#" class="icon" title="Login Sistem Penilaian">
+                            <i class="fa fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-content application-content-card-content" style="text-align: center;">
+                    <p>LOGIN SISTEM PENILAIAN</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+</div>
