@@ -15,16 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home1', 'PagesController@home1');
-Route::get('/home2', 'PagesController@home2');
-Route::get('/home3', 'PagesController@home3');
+Route::get('/home', 'PagesController@home');
 
 Route::get('/guide', 'PagesController@guide');
 
 // Route::get('/publication', 'PagesController@publication');
 Route::get('/publication/{slug?}', 'PagesController@publication');
 
-Route::get('/penghargaan', 'PagesController@penghargaan');
+// Route::get('/penghargaan', 'PagesController@penghargaan');
 
 Auth::routes();
 
