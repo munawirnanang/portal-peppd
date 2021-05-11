@@ -338,7 +338,7 @@
             id="navbarNavAltMarkup"
           >
             <div class="navbar-nav">
-              <a href="{{ url('home') }}" {!! request()->is('home') ? 'class="nav-link active"' : 'class="nav-link"' !!}
+              <a href="{{ url('/') }}" {!! request()->is('/') ? 'class="nav-link active"' : 'class="nav-link"' !!}
                 >Beranda</a
               >
               <a href="{{ url('guide') }}" {!! request()->is('guide') ? 'class="nav-link active"' : 'class="nav-link"' !!}>Pedoman</a>
