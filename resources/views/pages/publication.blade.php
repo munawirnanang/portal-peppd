@@ -42,12 +42,13 @@ Last Update  : 5 Mei 2021 --}}
 
               <hr />
 
+              @foreach($articles as $article)
               <div class="card mb-3">
                 <div class="row no-gutters">
                   <div class="col-md-5">
                     <img
                       class="w-100 img-publication"
-                      src="{{ asset('images/img/knowledge_sharing_final_book.png') }}"
+                      src="{{ asset('images/summernote/'.$article->slug.'/'.$article->title_picture) }}"
                       alt="Knowledge Sharing"
                     />
                   </div>
@@ -55,105 +56,26 @@ Last Update  : 5 Mei 2021 --}}
                     <div class="card-body">
                       <p class="card-text">
                         <small class="text-muted"
-                          >Last updated 3 mins ago</small
+                          >{{ $article->created_at->diffForHumans() }}</small
                         >
                         <span class="badge badge-secondary float-right"
-                          >Berita</span
+                          >{{ $article->category->name }}</span
                         >
                       </p>
                       <h5 class="card-title title-publication">
                         <b
-                          >Manajemen Data SPBE Menentukan Kualitas Data
-                          Indonesia</b
+                          >{{ $article->title }}</b
                         >
                       </h5>
                       <p class="card-text text-publication">
-                        Deputi Bidang Pemantauan, Evaluasi, dan Pengendalian
-                        Pembangunan Kementerian PPN/Bappenas Taufik Hanafi
-                        mengatakan, tata kelola at...<i
-                          ><a href>selengkapnya</a></i
-                        >
+                        {{ Str::limit($article->description, 130) }}
+                        <i><a target="_blank" rel="noopener" href="{{ url('publication/'.$article->slug) }}" title="{{ $article->title }}">selengkapnya</a></i>
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="card mb-3">
-                <div class="row no-gutters">
-                  <div class="col-md-5">
-                    <img
-                      class="w-100 img-publication"
-                      src="{{ asset('images/img/knowledge_sharing_final_book.png') }}"
-                      alt="Knowledge Sharing"
-                      height="200"
-                    />
-                  </div>
-                  <div class="col-md-7">
-                    <div class="card-body">
-                      <p class="card-text">
-                        <small class="text-muted"
-                          >Last updated 3 mins ago</small
-                        >
-                        <span class="badge badge-secondary float-right"
-                          >Berita</span
-                        >
-                      </p>
-                      <h5 class="card-title title-publication">
-                        <b
-                          >Manajemen Data SPBE Menentukan Kualitas Data
-                          Indonesia</b
-                        >
-                      </h5>
-                      <p class="card-text text-publication">
-                        Deputi Bidang Pemantauan, Evaluasi, dan Pengendalian
-                        Pembangunan Kementerian PPN/Bappenas Taufik Hanafi
-                        mengatakan, tata kelola at...<i
-                          ><a href>selengkapnya</a></i
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mb-3">
-                <div class="row no-gutters">
-                  <div class="col-md-5">
-                    <img
-                      class="w-100 img-publication"
-                      src="{{ asset('images/img/knowledge_sharing_final_book.png') }}"
-                      alt="Knowledge Sharing"
-                      height="200"
-                    />
-                  </div>
-                  <div class="col-md-7">
-                    <div class="card-body">
-                      <p class="card-text">
-                        <small class="text-muted"
-                          >Last updated 3 mins ago</small
-                        >
-                        <span class="badge badge-secondary float-right"
-                          >Berita</span
-                        >
-                      </p>
-                      <h5 class="card-title title-publication">
-                        <b
-                          >Manajemen Data SPBE Menentukan Kualitas Data
-                          Indonesia</b
-                        >
-                      </h5>
-                      <p class="card-text text-publication">
-                        Deputi Bidang Pemantauan, Evaluasi, dan Pengendalian
-                        Pembangunan Kementerian PPN/Bappenas Taufik Hanafi
-                        mengatakan, tata kelola at...<i
-                          ><a href>selengkapnya</a></i
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              @endforeach
             </section>
           </div>
           <!-- End Section Publication -->

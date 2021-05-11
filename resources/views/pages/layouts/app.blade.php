@@ -14,7 +14,7 @@
         <!-- Bootstrap CSS -->
         <link
             rel="stylesheet"
-            href="assets/bootstrap-4.6.0-dist/css/bootstrap.min.css"
+            href="{{ asset('assets/bootstrap-4.6.0-dist/css/bootstrap.min.css') }}"
         />
 
         <!-- Font Awesome -->
@@ -439,7 +439,7 @@
 
     <!-- script -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="assets/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('assets/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js') }}"></script>
 
     <script>
       $(window).resize(function () {

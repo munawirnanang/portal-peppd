@@ -11,7 +11,9 @@ class PagesController extends Controller
     
     public function home()
     {
-        return view('pages.home');
+        $list_guides = Guide::all();
+        $articles = Article::where('status', 'publish')->latest()->paginate(3);
+        return view('pages.home', compact('articles', 'list_guides'));
     }
 
     public function guide()
@@ -23,13 +25,11 @@ class PagesController extends Controller
     public function publication($slug = null)
     {
         if ($slug == null) {
-            
             $articles = Article::where('status', 'publish')->latest()->get();
             return view('pages.publication', compact('articles'));
-
         }else{
             $article = Article::where('slug', $slug)->first();
-            return view('pages.article', compact('article'));
+            return view('pages.publication_article', compact('article'));
         }
         
     }

@@ -91,118 +91,40 @@ Last Update  : 5 Mei 2021 --}}
             <section class="publication">
               <i class="fas fa-newspaper"></i>Publikasi
               <hr />
+              @foreach($articles as $article)
               <div class="card mb-3">
                 <div class="row no-gutters">
                   <div class="col-md-5">
                     <img
                       class="w-100 img-publication"
-                      src="{{ asset('images/img/knowledge_sharing_final_book.png') }}"
-                      alt="Knowledge Sharing"
+                      src="{{ asset('images/summernote/'.$article->slug.'/'.$article->title_picture) }}"
+                      alt="{{ $article->title }}"
                     />
                   </div>
                   <div class="col-md-7">
                     <div class="card-body">
                       <p class="card-text">
                         <small class="text-muted"
-                          >Last updated 3 mins ago</small
+                          >{{ $article->created_at->diffForHumans() }}</small
                         >
                         <span class="badge badge-secondary float-right"
-                          >Berita</span
+                          >{{ $article->category->name }}</span
                         >
                       </p>
                       <h5 class="card-title title-publication">
                         <b
-                          >Manajemen Data SPBE Menentukan Kualitas Data
-                          Indonesia</b
+                          >{{ $article->title }}</b
                         >
                       </h5>
                       <p class="card-text text-publication">
-                        Deputi Bidang Pemantauan, Evaluasi, dan Pengendalian
-                        Pembangunan Kementerian PPN/Bappenas Taufik Hanafi
-                        mengatakan, tata kelola at...<i
-                          ><a href>selengkapnya</a></i
-                        >
+                        {{ Str::limit($article->description, 130) }}
+                        <i><a target="_blank" rel="noopener" href="{{ url('publication/'.$article->slug) }}" title="{{ $article->title }}">selengkapnya</a></i>
                       </p>
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="card mb-3">
-                <div class="row no-gutters">
-                  <div class="col-md-5">
-                    <img
-                      class="w-100 img-publication"
-                      src="{{ asset('images/img/knowledge_sharing_final_book.png') }}"
-                      alt="Knowledge Sharing"
-                      height="200"
-                    />
-                  </div>
-                  <div class="col-md-7">
-                    <div class="card-body">
-                      <p class="card-text">
-                        <small class="text-muted"
-                          >Last updated 3 mins ago</small
-                        >
-                        <span class="badge badge-secondary float-right"
-                          >Berita</span
-                        >
-                      </p>
-                      <h5 class="card-title title-publication">
-                        <b
-                          >Manajemen Data SPBE Menentukan Kualitas Data
-                          Indonesia</b
-                        >
-                      </h5>
-                      <p class="card-text text-publication">
-                        Deputi Bidang Pemantauan, Evaluasi, dan Pengendalian
-                        Pembangunan Kementerian PPN/Bappenas Taufik Hanafi
-                        mengatakan, tata kelola at...<i
-                          ><a href>selengkapnya</a></i
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="card mb-3">
-                <div class="row no-gutters">
-                  <div class="col-md-5">
-                    <img
-                      class="w-100 img-publication"
-                      src="{{ asset('images/img/knowledge_sharing_final_book.png') }}"
-                      alt="Knowledge Sharing"
-                      height="200"
-                    />
-                  </div>
-                  <div class="col-md-7">
-                    <div class="card-body">
-                      <p class="card-text">
-                        <small class="text-muted"
-                          >Last updated 3 mins ago</small
-                        >
-                        <span class="badge badge-secondary float-right"
-                          >Berita</span
-                        >
-                      </p>
-                      <h5 class="card-title title-publication">
-                        <b
-                          >Manajemen Data SPBE Menentukan Kualitas Data
-                          Indonesia</b
-                        >
-                      </h5>
-                      <p class="card-text text-publication">
-                        Deputi Bidang Pemantauan, Evaluasi, dan Pengendalian
-                        Pembangunan Kementerian PPN/Bappenas Taufik Hanafi
-                        mengatakan, tata kelola at...<i
-                          ><a href>selengkapnya</a></i
-                        >
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              @endforeach
             </section>
           </div>
           <!-- End Section Publication -->
@@ -213,17 +135,18 @@ Last Update  : 5 Mei 2021 --}}
               Pedoman
               <hr />
               <div class="row">
+                @foreach($list_guides as $list)
                 <div class="my-2 mx-2">
                   <div class="img-guide-box">
                     <img
-                      src="{{ asset('images/img/pedoman_pelaksanaan_ppd_2021_2.png') }}"
+                      src="{{ asset('file_guide/'.Str::slug($list->name, '-').'/'.$list->title_picture) }}"
                       class="img-thumbnail img-guide"
-                      alt="Pedoman Pelaksanaan PPD 2021"
+                      alt="{{ $list->name }}"
                     />
                     <a href="" class="d-flex justify-content-center">
                       <img
                         src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Pelaksanaan PPD 2021"
+                        alt="Download {{ $list->name }}"
                         class="align-self-center"
                         height="70"
                         width="70"
@@ -231,60 +154,7 @@ Last Update  : 5 Mei 2021 --}}
                     </a>
                   </div>
                 </div>
-                <div class="my-2 mx-2">
-                  <div class="img-guide-box">
-                    <img
-                      src="{{ asset('images/img/pedoman_sistem_ppd_pengguna_daerah_provinsi_2.png') }}"
-                      class="img-thumbnail img-guide"
-                      alt="Pedoman Sistem PPD Pengguna Daerah_Provinsi"
-                    />
-                    <a href="" class="d-flex justify-content-center">
-                      <img
-                        src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Pelaksanaan PPD 2021"
-                        class="align-self-center"
-                        height="70"
-                        width="70"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div class="my-2 mx-2">
-                  <div class="img-guide-box">
-                    <img
-                      src="{{ asset('images/img/pedoman_sistem_ppd_tim_penilai_teknis_2.png') }}"
-                      class="img-thumbnail img-guide"
-                      alt="Pedoman Sistem PPD Tim Penilai Teknis"
-                    />
-                    <a href="" class="d-flex justify-content-center">
-                      <img
-                        src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Pelaksanaan PPD 2021"
-                        class="align-self-center"
-                        height="70"
-                        width="70"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div class="my-2 mx-2">
-                  <div class="img-guide-box">
-                    <img
-                      src="{{ asset('images/img/pedoman_sistem_ppd_tim_penilai_teknis_2.png') }}"
-                      class="img-thumbnail img-guide"
-                      alt="Pedoman Sistem PPD Tim Penilai Teknis"
-                    />
-                    <a href="" class="d-flex justify-content-center">
-                      <img
-                        src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Pelaksanaan PPD 2021"
-                        class="align-self-center"
-                        height="70"
-                        width="70"
-                      />
-                    </a>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </section>
           </div>

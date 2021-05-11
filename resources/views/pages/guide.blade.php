@@ -41,17 +41,18 @@ Last Update  : 5 Mei 2021 --}}
               <!-- End Search Box -->
               <hr />
               <div class="row">
+                @foreach($list_guides as $list)
                 <div class="my-2 mx-2">
                   <div class="img-guide-box">
                     <img
-                      src="{{ asset('images/img/pedoman_pelaksanaan_ppd_2021_2.png') }}"
+                      src="{{ asset('file_guide/'.Str::slug($list->name, '-').'/'.$list->title_picture) }}"
                       class="img-thumbnail img-guide"
-                      alt="Pedoman Pelaksanaan PPD 2021"
+                      alt="{{ $list->name }}"
                     />
                     <a href="" class="d-flex justify-content-center">
                       <img
                         src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Pelaksanaan PPD 2021"
+                        alt="Download {{ $list->name }}"
                         class="align-self-center"
                         height="70"
                         width="70"
@@ -59,60 +60,7 @@ Last Update  : 5 Mei 2021 --}}
                     </a>
                   </div>
                 </div>
-                <div class="my-2 mx-2">
-                  <div class="img-guide-box">
-                    <img
-                      src="{{ asset('images/img/pedoman_sistem_ppd_pengguna_daerah_provinsi_2.png') }}"
-                      class="img-thumbnail img-guide"
-                      alt="Pedoman Sistem PPD Pengguna Daerah_Provinsi"
-                    />
-                    <a href="" class="d-flex justify-content-center">
-                      <img
-                        src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Sistem PPD Pengguna Daerah Provinsi"
-                        class="align-self-center"
-                        height="70"
-                        width="70"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div class="my-2 mx-2">
-                  <div class="img-guide-box">
-                    <img
-                      src="{{ asset('images/img/pedoman_sistem_ppd_tim_penilai_teknis_2.png') }}"
-                      class="img-thumbnail img-guide"
-                      alt="Pedoman Sistem PPD Tim Penilai Teknis"
-                    />
-                    <a href="" class="d-flex justify-content-center">
-                      <img
-                        src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Sistem PPD Tim Penilai Teknis"
-                        class="align-self-center"
-                        height="70"
-                        width="70"
-                      />
-                    </a>
-                  </div>
-                </div>
-                <div class="my-2 mx-2">
-                  <div class="img-guide-box">
-                    <img
-                      src="{{ asset('images/img/pedoman_sistem_ppd_tim_penilai_teknis_2.png') }}"
-                      class="img-thumbnail img-guide"
-                      alt="Pedoman Sistem PPD Tim Penilai Teknis"
-                    />
-                    <a href="" class="d-flex justify-content-center">
-                      <img
-                        src="{{ asset('images/img/see_more.png') }}"
-                        alt="Pedoman Sistem PPD Tim Penilai Teknis"
-                        class="align-self-center"
-                        height="70"
-                        width="70"
-                      />
-                    </a>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </section>
           </div>
