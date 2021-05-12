@@ -8,8 +8,8 @@ Last Update  : 5 Mei 2021 --}}
 
 @section('content')
     <div class="container-md" style="margin-top: 8rem">
-      <div class="row">
-        <div class="col-lg-12">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-10">
           <!-- Section Publication -->
           <div class="col-md-12">
             <section class="publication">
@@ -24,10 +24,10 @@ Last Update  : 5 Mei 2021 --}}
                         aria-describedby="button-addon1"
                         class="form-control border-0"
                         style="border-radius: 27px"
+                        id="publication_search"
                       />
                       <div class="input-group-append">
                         <button
-                          id="button-addon1"
                           type="submit"
                           class="btn btn-link text-primary"
                         >
@@ -43,7 +43,7 @@ Last Update  : 5 Mei 2021 --}}
               <hr />
 
               @foreach($articles as $article)
-              <div class="card mb-3">
+              <div class="publication-list-content-card card mb-3">
                 <div class="row no-gutters">
                   <div class="col-md-5">
                     <img
@@ -68,7 +68,7 @@ Last Update  : 5 Mei 2021 --}}
                         >
                       </h5>
                       <p class="card-text text-publication">
-                        {{ Str::limit($article->description, 130) }}
+                        {!! Str::limit($article->text, 170) !!}
                         <i><a target="_blank" rel="noopener" href="{{ url('publication/'.$article->slug) }}" title="{{ $article->title }}">selengkapnya</a></i>
                       </p>
                     </div>
@@ -83,3 +83,17 @@ Last Update  : 5 Mei 2021 --}}
       </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function(){
+            $("#publication_search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                // $(".publication-list-row").filter(function() {
+                $(".publication-list-content-card").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+@endpush

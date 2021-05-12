@@ -441,6 +441,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="{{ asset('assets/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js') }}"></script>
 
+    {{-- import javascript from content --}}
+    @stack('script')
+
     <script>
       $(window).resize(function () {
         if ($(window).width() >= 992) {

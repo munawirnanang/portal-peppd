@@ -117,7 +117,7 @@ Last Update  : 5 Mei 2021 --}}
                         >
                       </h5>
                       <p class="card-text text-publication">
-                        {{ Str::limit($article->description, 130) }}
+                        {!! Str::limit($article->text, 130) !!}
                         <i><a target="_blank" rel="noopener" href="{{ url('publication/'.$article->slug) }}" title="{{ $article->title }}">selengkapnya</a></i>
                       </p>
                     </div>

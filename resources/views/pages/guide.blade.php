@@ -24,6 +24,7 @@ Last Update  : 5 Mei 2021 --}}
                         aria-describedby="button-addon1"
                         class="form-control border-0"
                         style="border-radius: 27px"
+                        id="guide_search"
                       />
                       <div class="input-group-append">
                         <button
@@ -42,7 +43,7 @@ Last Update  : 5 Mei 2021 --}}
               <hr />
               <div class="row">
                 @foreach($list_guides as $list)
-                <div class="my-2 mx-2">
+                <div class="guide-list-content-card my-2 mx-2">
                   <div class="img-guide-box">
                     <img
                       src="{{ asset('file_guide/'.Str::slug($list->name, '-').'/'.$list->title_picture) }}"
@@ -69,3 +70,17 @@ Last Update  : 5 Mei 2021 --}}
       </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $(document).ready(function(){
+            $("#guide_search").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                // $(".publication-list-row").filter(function() {
+                $(".guide-list-content-card").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+@endpush
