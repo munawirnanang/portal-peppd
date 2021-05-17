@@ -33,12 +33,24 @@
         <!-- style -->
         <style>
             @media (max-width: 575px) {
+                .dekstop {
+                  display: none;
+                }
+
+                .mobile {
+                  display: block;
+                }
+
                 .card-activity {
                 height: 8rem;
                 }
 
+                .box-img-activity {
+                  padding: 0;
+                }
+
                 .text-activity {
-                font-size: 0.6rem;
+                font-size: 0.4rem;
                 }
 
                 .img-publication {
@@ -54,8 +66,8 @@
                 }
 
                 .img-guide {
-                height: 12rem;
-                width: 8.5rem;
+                height: 11rem;
+                width: 8rem;
                 }
 
                 .text-footer {
@@ -67,6 +79,14 @@
                 }
             }
             @media (min-width: 576px) {
+                .dekstop {
+                  display: none;
+                }
+
+                .mobile {
+                  display: block;
+                }
+
                 .card-activity {
                 height: 13rem;
                 }
@@ -89,12 +109,24 @@
                 }
             }
             @media (min-width: 768px) {
+                .dekstop {
+                  display: none;
+                }
+
+                .mobile {
+                  display: block;
+                }
+
                 .card-activity {
                 height: 9rem;
                 }
 
+                .box-img-activity {
+                  padding: 0;
+                }
+
                 .text-activity {
-                font-size: 0.7rem;
+                font-size: 0.5rem;
                 }
 
                 .img-publication {
@@ -131,6 +163,14 @@
                 }
             }
             @media (min-width: 992px) {
+                .dekstop {
+                  display: block;
+                }
+
+                .mobile {
+                  display: none;
+                }
+
                 .navbar {
                 font-size: 0.7rem;
                 }
@@ -173,6 +213,14 @@
                 }
             }
             @media (min-width: 1200px) {
+                .dekstop {
+                  display: block;
+                }
+
+                .mobile {
+                  display: none;
+                }
+
                 .navbar {
                 font-size: 0.9rem;
                 }
@@ -180,6 +228,7 @@
                 .card-activity {
                 height: 10rem;
                 }
+                
                 .text-activity {
                 font-size: 0.7rem;
                 }
@@ -356,7 +405,7 @@
 
     <!-- Footer -->
     <footer
-      class="text-light text-lg-start my-4"
+      class="text-light text-lg-start mt-4"
       style="background-color: #1f3984"
     >
       <!-- Grid container -->
