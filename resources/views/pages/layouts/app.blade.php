@@ -352,16 +352,19 @@
 
     <body style="background-color: #efefef">
     <div class="fixed-top">
+
       <div class="" style="background-color: #1f3984; color: white">
         <div class="container">
-          <marquee
-            >KEMENTERIAN PERENCANAAN PEMBANGUNAN NASIONAL (BADAN PERENCANAAN
-            PEMBANGUNAN NASIONAL) REPUBLIK INDONESIA</marquee
-          >
+          <marquee behavior="scroll" direction="left" style="font-size: 14px; font-weight: 400; white-space: nowrap;">
+            <span style="margin-right: 5%;">Direktorat Pemantauan, Evaluasi dan Pengendalian Pembangunan Daerah Kementerian PPN/BAPPENAS</span>
+            <a href="{{ url('publication/'.$marquee_news->slug) }}" target="_blank"><span style="color: chartreuse;"><i class="fa fa-exclamation-triangle"></i> Daerah Terbaik Penerima Penghargaan Pembangunan Daerah 2021</span></a>
+        </marquee>
         </div>
       </div>
+
       <nav
-        class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 mb-4 bg-white rounded"
+        class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 bg-white rounded"
+        style="background-image: url({{ asset('images/img/bappenas_banner.png') }}); background-size: cover"
       >
         <div class="container-fluid" style="width: 70%">
           <a class="navbar-brand" href="#"
@@ -390,8 +393,8 @@
               <a href="{{ url('/') }}" {!! request()->is('/') ? 'class="nav-link active"' : 'class="nav-link"' !!}
                 >Beranda</a
               >
-              <a href="{{ url('guide') }}" {!! request()->is('guide') ? 'class="nav-link active"' : 'class="nav-link"' !!}>Pedoman</a>
-              <a href="{{ url('publication') }}" {!! request()->is('publication') ? 'class="nav-link active"' : 'class="nav-link"' !!}>Publikasi</a>
+              <a href="{{ url('guide') }}" {!! request()->is('guide') ? 'class="nav-link active"' : 'class="nav-link"' !!}>Publikasi</a>
+              <a href="{{ url('publication') }}" {!! request()->is('publication') ? 'class="nav-link active"' : 'class="nav-link"' !!}>Berita</a>
               <a class="nav-link" href="#">Kegiatan</a>
               <a class="nav-link" href="#">Aplikasi Kami</a>
               <a class="nav-link" href="#">Hubungi Kami</a>
@@ -399,6 +402,7 @@
           </div>
         </div>
       </nav>
+
     </div>
 
     @yield('content')
@@ -415,7 +419,8 @@
           <!--Grid column-->
           <div class="col-md-12 col-lg-5">
             <h6 class="text-uppercase">
-              DIREKTORAT PEPPD KEMENTERIAN PPN/BAPPENAS
+              DIREKTORAT PEPPD 
+              <br/>KEMENTERIAN PPN/BAPPENAS
             </h6>
             <p>
               Gedung Bappenas Lantai 9 Jl. H.R. Rasuna Said Kuningan, Setiabudi

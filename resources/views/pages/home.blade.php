@@ -91,7 +91,7 @@ Last Update  : 5 Mei 2021 --}}
           <div class="col-md-12 order-3">
             <section class="publication">
             <a href="{{ url('publication') }}" style="color: black;">
-              Publikasi
+              Berita
               <i class="fa fa-angle-double-right" aria-hidden="true"></i>
               </a>
               <hr />
@@ -137,7 +137,7 @@ Last Update  : 5 Mei 2021 --}}
           <div class="col-md-12 order-5">
             <section class="guide">
               <a href="{{ url('guide') }}" style="color: black;">
-                Pedoman
+                Publikasi
                 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
               </a>
               <hr />
@@ -565,9 +565,9 @@ Last Update  : 5 Mei 2021 --}}
                   alt="Aplikasi Penilaian PPD"
                 />
                 <div class="card-body">
-                  <p class="card-text text-center">LOGIN SISTEM PENILAIAN</p>
+                  <p class="card-text text-center">LOGIN SISTEM PENILAIAN PPD</p>
                 </div>
-                <a href="" class="d-flex justify-content-center">
+                <a href="https://peppd.bappenas.go.id/ppd2021/" target="_blank" class="d-flex justify-content-center">
                   <img
                     class="align-self-center"
                     src="{{ asset('images/img/External_link_font_awesome.png') }}"
@@ -581,14 +581,14 @@ Last Update  : 5 Mei 2021 --}}
             <div class="card card-application my-3">
               <div class="img-application">
                 <img
-                  src="{{ asset('images/img/penilaian_ppd.png') }}"
+                  src="{{ asset('images/img/pemantauan.png') }}"
                   class="card-img-top"
                   alt="Aplikasi Penilaian PPD"
                 />
                 <div class="card-body">
-                  <p class="card-text text-center">LOGIN SISTEM PENILAIAN</p>
+                  <p class="card-text text-center">LOGIN SISTEM PEMANTAUAN</p>
                 </div>
-                <a href="" class="d-flex justify-content-center">
+                <a href="https://peppd.bappenas.go.id/pemantauan/" target="_blank" class="d-flex justify-content-center">
                   <img
                     class="align-self-center"
                     src="{{ asset('images/img/External_link_font_awesome.png') }}"
@@ -611,7 +611,7 @@ Last Update  : 5 Mei 2021 --}}
             <div class="card my-3">
               <a href="https://docs.google.com/forms/d/e/1FAIpQLSfcACkyqgiSTD7QrSYHBXxg47xwenTZfi7ofACM598Kjg8Jzw/viewform?usp=pp_url" target="_blank">
                 <img
-                  src="{{ asset('images/img/Contact-Centre-01.png') }}"
+                  src="{{ asset('images/img/Contact-Centre-02.png') }}"
                   class="card-img-top"
                   alt="Aplikasi Penilaian PPD"
                 />
