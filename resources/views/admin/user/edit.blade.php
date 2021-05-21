@@ -176,7 +176,7 @@
       var scrolled = $(window).scrollTop();
       var widthcontainer = $('.content').width();
       
-      if (scrolled > 150) {
+      if (scrolled > 250) {
         $("#form-edit-user").addClass("position-fixed");
         $("#form-edit-user").css({'top' : '0', 'width' : (32 * widthcontainer) / 100, 'margin-top' : '1%'});
       }else{
