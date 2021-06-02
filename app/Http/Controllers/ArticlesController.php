@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App;
 use App\Article;
 use App\Category;
+use App\Log;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -118,7 +119,7 @@ class ArticlesController extends Controller
         }
    
 
-        Article::create([
+        $create_article = Article::create([
             'id_category' => $request->id_category,
             'title' => $request->title,
             'slug' => Str::slug($request->title, '-'),
@@ -127,6 +128,15 @@ class ArticlesController extends Controller
             'text' => $text,
             'author' => Auth::user()->email,
             'status' => 'draft',
+        ]);
+
+        //log
+        Log::create([
+            'page' => 'Article',
+            'action' => 'create',
+            'description' => Auth::user()->email.' menambahkan article dengan id = '.$create_article->id,
+            'database' => 'articles',
+            'author' => Auth::user()->email,
         ]);
 
         return redirect('/article')->with('status', 'Data article berhasil ditambahkan!');
@@ -240,8 +250,21 @@ class ArticlesController extends Controller
             $column_article_update['title_picture'] = $title_picture;
         }
 
-        Article::where('slug', $slug)
+        $update_article = Article::where('slug', $slug)
             ->update($column_article_update);
+
+        if($update_article == 1) {
+            $get_article = Article::where('slug', $slug)->first();
+
+            //log
+            Log::create([
+                'page' => 'Article',
+                'action' => 'update',
+                'description' => Auth::user()->email.' mengubah article dengan id = '.$get_article->id,
+                'database' => 'articles',
+                'author' => Auth::user()->email,
+            ]);
+        }
 
         return redirect('/article')->with('status', 'Data article berhasil diubah!');
     }
@@ -288,7 +311,18 @@ class ArticlesController extends Controller
         $removeFolder = $this->removeFolder($article->slug);
         
         if ($removeFolder == TRUE) {
+
+            //log
+            Log::create([
+                'page' => 'Article',
+                'action' => 'delete',
+                'description' => Auth::user()->email.' menghapus article dengan judul = '.$article->title,
+                'database' => 'articles',
+                'author' => Auth::user()->email,
+            ]);
+
             Article::destroy($article->id);
+            
             return redirect('/article')->with('status', 'Data article berhasil dihapus!');
         }else{
             return redirect('/article')->with('status', 'Data article gagal dihapus!');

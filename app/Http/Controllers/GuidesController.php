@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Guide;
 use App\Category;
+use App\Log;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -83,12 +84,21 @@ class GuidesController extends Controller
             $request->file->move(public_path($foldername), $file);
         }
 
-        Guide::create([
+        $create_guide = Guide::create([
             'id_category' => $request->id_category,
             'name' => $request->name,
             'description' => $request->description,
             'title_picture' => $title_picture,
             'file' => $file,
+        ]);
+
+        //log
+        Log::create([
+            'page' => 'Guidelines',
+            'action' => 'create',
+            'description' => Auth::user()->email.' menambahkan guide dengan id = '.$create_guide->id,
+            'database' => 'guides',
+            'author' => Auth::user()->email,
         ]);
 
         return redirect('/guidelines/create')->with('status', 'Data guide berhasil ditambahkan!');
@@ -170,8 +180,21 @@ class GuidesController extends Controller
             $column_guide_update['file'] = $file;
         }
 
-        Guide::where('id', $guide->id)
+        $update_guide = Guide::where('id', $guide->id)
             ->update($column_guide_update);
+
+        if ($update_guide == 1) {
+            $get_guide = Guide::find($guide->id);
+
+            //log
+            Log::create([
+                'page' => 'Guidelines',
+                'action' => 'update',
+                'description' => Auth::user()->email.' mengubah guide dengan id = '.$get_guide->id,
+                'database' => 'guides',
+                'author' => Auth::user()->email,
+            ]);
+        }
 
         return redirect('/guidelines/')->with('status', 'Data guide berhasil diubah!');
     }
@@ -187,7 +210,18 @@ class GuidesController extends Controller
         $removeFolder = $this->removeFolder($guide->name);
         
         if ($removeFolder == TRUE) {
+
+            //log
+            Log::create([
+                'page' => 'Guidelines',
+                'action' => 'delete',
+                'description' => Auth::user()->email.' menghapus guide dengan nama = '.$guide->name,
+                'database' => 'guides',
+                'author' => Auth::user()->email,
+            ]);
+
             Guide::destroy($guide->id);
+
             return redirect('/guidelines')->with('status', 'Data Guide berhasil dihapus!');
         }else{
             return redirect('/guidelines')->with('status', 'Data Guide gagal dihapus!');

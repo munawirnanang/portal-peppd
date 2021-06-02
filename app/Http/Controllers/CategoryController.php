@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Log;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -57,6 +58,15 @@ class CategoryController extends Controller
                         'slug' => Str::slug($request->name, '-'),
                     ]);
 
+        //log
+        Log::create([
+            'page' => '-',
+            'action' => 'create',
+            'description' => Auth::user()->email.' menambahkan category dengan id = '.$category->id,
+            'database' => 'categories',
+            'author' => Auth::user()->email,
+        ]);
+
         return $category;
     }
 
@@ -103,6 +113,15 @@ class CategoryController extends Controller
 
         $category = Category::find($request->id);
 
+        //log
+        Log::create([
+            'page' => '-',
+            'action' => 'update',
+            'description' => Auth::user()->email.' mengubah category dengan id = '.$category->id,
+            'database' => 'categories',
+            'author' => Auth::user()->email,
+        ]);
+
         return $category;
     }
 
@@ -114,6 +133,17 @@ class CategoryController extends Controller
      */
     public function destroy(Request $request)
     {
+        $get_category = Category::find($request->id);
+
+        //log
+        Log::create([
+            'page' => '-',
+            'action' => 'delete',
+            'description' => Auth::user()->email.' menghapus category dengan nama = '.$get_category->name,
+            'database' => 'categories',
+            'author' => Auth::user()->email,
+        ]);
+
         $category = Category::destroy($request->id);
 
         return $category;

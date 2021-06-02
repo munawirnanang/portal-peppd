@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Log;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -56,10 +58,19 @@ class UsersController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        User::create([
+        $create_user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
+        ]);
+
+        //log
+        Log::create([
+            'page' => 'User',
+            'action' => 'create',
+            'description' => Auth::user()->email.' menambahkan user dengan id = '.$create_user->id,
+            'database' => 'users',
+            'author' => Auth::user()->email,
         ]);
 
         return redirect('/user/create')->with('status', 'Data user berhasil ditambahkan!');
@@ -106,12 +117,25 @@ class UsersController extends Controller
             'password' => 'required|min:6|confirmed',
         ]);
 
-        User::where('id', $user->id)
+        $update_user = User::where('id', $user->id)
             ->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ]);
+
+        if($update_user == 1) {
+            $get_user = $user = User::find($user->id);
+
+            //log
+            Log::create([
+                'page' => 'User',
+                'action' => 'update',
+                'description' => Auth::user()->email.' mengubah user dengan id = '.$get_user->id,
+                'database' => 'users',
+                'author' => Auth::user()->email,
+            ]);
+        }
 
         return redirect('/user/'.$user->id)->with('status', 'Data user berhasil diubah!');
     }
@@ -124,7 +148,17 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
+        //log
+        Log::create([
+            'page' => 'User',
+            'action' => 'delete',
+            'description' => Auth::user()->email.' menghapus user dengan nama = '.$user->name,
+            'database' => 'users',
+            'author' => Auth::user()->email,
+        ]);
+
         User::destroy($user->id);
+
         return redirect('/user')->with('status', 'Data user berhasil dihapus!');
     }
 }
