@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //add on location information
+        Stevebauman\Location\LocationServiceProvider::class,
+
     ],
 
     /*
@@ -230,6 +233,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Image' => Intervention\Image\Facades\Image::class,
+        'Location' => Stevebauman\Location\Facades\Location::class,
+
 
     ],
 

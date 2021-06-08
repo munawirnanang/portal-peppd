@@ -24,4 +24,9 @@ class Article extends Model
         return $this->belongsTo(Category::class, 'id_category');
     }
 
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
 }

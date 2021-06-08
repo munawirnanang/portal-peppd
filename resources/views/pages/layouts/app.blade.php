@@ -269,7 +269,7 @@
 
             .navbar {
                 font-family: "Open Sans", sans-serif;
-                font-weight: 900;
+                font-weight: 600;
                 line-height: 18px;
                 color: #0d4a82;
             }
@@ -363,17 +363,17 @@
       </div>
 
       <nav
-        class="navbar navbar-expand-lg navbar-light bg-light shadow p-3 bg-white rounded"
+        class="navbar navbar-expand-lg navbar-light bg-light shadow px-3 bg-white rounded"
         style="background-image: url({{ asset('images/img/bappenas_banner.png') }}); background-size: cover"
       >
         <div class="container-fluid" style="width: 70%">
           <a class="navbar-brand" href="#"
             ><img
-              src="{{ asset('images/img/logo_bappenas.png') }}"
+              src="{{ asset('images/img/logo_bappenas_7.png') }}"
               alt="LOGO-BAPPENAS"
               class="img-responsive"
-              height="35"
-          /></a>
+              height="45"
+              /></a>
           <button
             class="navbar-toggler"
             type="button"
@@ -493,6 +493,7 @@
 
     <!-- script -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="{{ asset('assets/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js') }}"></script>
 
     {{-- import javascript from content --}}

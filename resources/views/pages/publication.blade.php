@@ -69,7 +69,7 @@ Last Update  : 5 Mei 2021 --}}
                       </h5>
                       <p class="card-text text-publication">
                         {!! Str::limit($article->text, 170) !!}
-                        <i><a target="_blank" rel="noopener" href="{{ url('publication/'.$article->slug) }}" title="{{ $article->title }}">selengkapnya</a></i>
+                        <i><a class="btn-read-more-article" data-id="{{ $article->id }}" target="_blank" rel="noopener" href="{{ url('publication/'.$article->slug) }}" title="{{ $article->title }}">selengkapnya</a></i>
                       </p>
                     </div>
                   </div>
@@ -87,6 +87,7 @@ Last Update  : 5 Mei 2021 --}}
 @push('script')
     <script>
         $(document).ready(function(){
+            
             $("#publication_search").on("keyup", function() {
                 var value = $(this).val().toLowerCase();
                 // $(".publication-list-row").filter(function() {
@@ -94,6 +95,26 @@ Last Update  : 5 Mei 2021 --}}
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                 });
             });
+
+            $('.btn-read-more-article').click(function() {
+              var dataId = $(this).attr("data-id");
+              var dataLog = "user mengklik article dengan id = "+dataId+" pada halaman article";
+              $.ajax({
+                  type: "POST",
+                  url: "{{ url('LogPortal/store') }}",
+                  data: { 
+                    "_token": "{{ csrf_token() }}", 
+                    action: dataLog,
+                  },
+                  success: function(result) {
+                    // console.log(result);
+                  },
+                  error: function(result) {
+                    console.log(result);
+                  }
+              });
+            });
+
         });
     </script>
 @endpush

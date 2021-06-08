@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\LogPortal;
 use App\Guide;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PagesController extends Controller
 {
@@ -35,6 +37,9 @@ class PagesController extends Controller
         }else{
             $data['article'] = Article::where('slug', $slug)->first();
             $data['marquee_news'] = Article::where('status', 'publish')->latest('id')->first();
+            $data['page_hint'] = DB::table('log_portals')
+                ->where('action', 'like', 'user mengklik article dengan id = '.$data['article']->id.'%')
+                ->get();
             return view('pages.publication_article', $data);
         }
         

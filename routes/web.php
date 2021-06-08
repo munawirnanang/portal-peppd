@@ -24,6 +24,16 @@ Route::get('/publication/{slug?}', 'PagesController@publication');
 
 // Route::get('/penghargaan', 'PagesController@penghargaan');
 
+//logPortal
+Route::post('LogPortal/store', 'LogPortalController@store');
+
+//comment
+// Route::get('comment/index', 'CommentController@index');
+Route::post('comment/index', 'CommentController@index');
+Route::post('comment/store', 'CommentController@store');
+Route::put('comment/update', 'CommentController@update');
+Route::delete('comment/delete', 'CommentController@destroy');
+
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
