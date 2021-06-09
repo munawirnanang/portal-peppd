@@ -356,7 +356,7 @@
       <div class="" style="background-color: #1f3984; color: white">
         <div class="container">
           <marquee behavior="scroll" direction="left" style="font-size: 14px; font-weight: 400; white-space: nowrap;">
-            <span style="margin-right: 5%;">Direktorat Pemantauan, Evaluasi dan Pengendalian Pembangunan Daerah Kementerian PPN/BAPPENAS</span>
+            <span style="margin-right: 5%;">Direktorat Pemantauan, Evaluasi, dan Pengendalian Pembangunan Daerah&nbsp;&nbsp;&nbsp;Kementerian PPN/BAPPENAS</span>
             <a href="{{ url('publication/'.$marquee_news->slug) }}" target="_blank"><span style="color: chartreuse;"><i class="fa fa-exclamation-triangle"></i> Daerah Terbaik Penerima Penghargaan Pembangunan Daerah 2021</span></a>
         </marquee>
         </div>

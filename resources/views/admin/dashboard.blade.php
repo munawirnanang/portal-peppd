@@ -97,16 +97,16 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">
-                  <i class="fas fa-chart-pie mr-1"></i>
-                  Sales
+                  <i class="fas fa-chart-pie mr-1 mb-3"></i>
+                  Jumlah view article
                 </h3>
                 <div class="card-tools">
                   <ul class="nav nav-pills ml-auto">
                     <li class="nav-item">
-                      <a class="nav-link active" href="#revenue-chart" data-toggle="tab">Area</a>
+                      <a class="nav-link active" href="#by-article-chart" data-toggle="tab">BY ARTICLE</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="#sales-chart" data-toggle="tab">Donut</a>
+                      <a class="nav-link" href="#sum-chart" data-toggle="tab">SUM</a>
                     </li>
                   </ul>
                 </div>
@@ -114,12 +114,23 @@
               <div class="card-body">
                 <div class="tab-content p-0">
                   <!-- Morris chart - Sales -->
-                  <div class="chart tab-pane active" id="revenue-chart"
-                       style="position: relative; height: 300px;">
-                      <canvas id="revenue-chart-canvas" height="300" style="height: 300px;"></canvas>
+                  <div class="chart tab-pane active" id="by-article-chart" style="position: relative; height: 400px;">
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                    <div id="container-by-article-chart"></div>
                    </div>
-                  <div class="chart tab-pane" id="sales-chart" style="position: relative; height: 300px;">
-                    <canvas id="sales-chart-canvas" height="300" style="height: 300px;"></canvas>
+                  <div class="chart tab-pane" id="sum-chart" style="position: relative; height: 400px;">
+                    <script src="https://code.highcharts.com/highcharts.js"></script>
+                    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+                    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+                    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+                    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+                    <div id="container-sum-chart"></div>
                   </div>
                 </div>
               </div><!-- /.card-body -->
@@ -463,6 +474,57 @@
           <!-- right col (We are only adding the ID to make the widgets sortable)-->
           <section class="col-lg-5 connectedSortable">
 
+            <!-- card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">
+                  <i class="fas fa-table mr-1 mb-3"></i>
+                  Tabel Jumlah Article
+                </h3>
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <!-- Morris chart - Sales -->
+                  <div class="chart tab-pane active" id="by-article-chart" style="position: relative; height: 400px;">
+                  <table id="databales-view-article" class="table table-bordered table-striped dataTable dtr-inline" role="grid" aria-describedby="example1_info">
+                    <thead>
+                      <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Jumlah view</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>1</td>
+                        <td>Daerah Terbaik Penerima Penghargaan Pembangunan Daerah 2021</td>
+                        <td>1211</td>
+                      </tr>
+                      <tr>
+                        <td>2</td>
+                        <td>Manajemen Data SPBE Menentukan Kualitas Data Indonesia</td>
+                        <td>876</td>
+                      </tr>
+                      <tr>
+                        <td>3</td>
+                        <td>Bappenas Wujudkan Transformasi Digital Melalui Satu Data Indonesia untuk PEN</td>
+                        <td>234</td>
+                      </tr>
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Jumlah view</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  </div>
+                </div>
+              </div><!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+
             <!-- Map card -->
             <div class="card bg-gradient-primary">
               <div class="card-header border-0">
@@ -608,3 +670,137 @@
 </div>
 
 @endsection
+
+@push('script')
+<script>
+  $(document).ready(function() {
+    $('#databales-view-article').DataTable();
+  });
+</script>
+
+<script>
+  Highcharts.chart('container-by-article-chart', {
+
+    title: {
+        text: 'Jumlah view article per article'
+    },
+
+    /* subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    }, */
+
+    yAxis: {
+        title: {
+            text: 'Jumlah'
+        }
+    },
+
+    xAxis: {
+        accessibility: {
+            rangeDescription: 'Range: 2010 to 2017'
+        }
+    },
+
+    /* legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle'
+    }, */
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: [{
+        name: 'Daerah Terbaik Penerima Penghargaan Pembangunan Daerah 2021',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }, {
+        name: 'Manajemen Data SPBE Menentukan Kualitas Data Indonesia',
+        data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
+    }, {
+        name: 'Bappenas Wujudkan Transformasi Digital Melalui Satu Data Indonesia untuk',
+        data: [11744, 17722, 16005, 19771, 20185, 24377, 32147, 39387]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+  });
+
+  Highcharts.chart('container-sum-chart', {
+
+    title: {
+        text: 'Jumlah view article'
+    },
+
+    /* subtitle: {
+        text: 'Source: thesolarfoundation.com'
+    }, */
+
+    yAxis: {
+        title: {
+            text: 'Jumlah'
+        }
+    },
+
+    xAxis: {
+        accessibility: {
+            rangeDescription: 'Range: 2010 to 2017'
+        }
+    },
+
+    /* legend: {
+        layout: 'vertical',
+        align: 'center',
+        verticalAlign: 'bottom'
+    }, */
+
+    plotOptions: {
+        series: {
+            label: {
+                connectorAllowed: false
+            },
+            pointStart: 2010
+        }
+    },
+
+    series: [{
+        name: 'Jumlah view seluruh article',
+        data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]
+    }],
+
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'bottom'
+                }
+            }
+        }]
+    }
+
+  });
+</script>
+@endpush
